@@ -319,7 +319,8 @@ local function setup()
     highlight(group, color)
   end
 end
-setup()
-wind.highlight = highlight
-
-return wind
+return{
+  highlight = highlight,
+  setup = setup,
+  colors = wind,
+}

@@ -1,10 +1,10 @@
 ## Wind colorscheme for neovim
 
-![demo](https://i.imgur.com/T8Sj1uS.png)
+![demo](./images/preview.png)
 
 ## Install
 
-```
+``` vim
 Plug 'windwp/wind-colors'
 
 colorscheme wind
