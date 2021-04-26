@@ -1,3 +1,4 @@
+
 --[[
   Wind
   URL: https://github.com/windwp/wind-colors
@@ -7,11 +8,13 @@
   https://github.com/RRethy/nvim-base16
   https://github.com/Rigellute/rigel
 --]]
+--
 local wind = {
   bg2         = "#001a25",
   fg          = "#e6e6dc",
   fg_light    = "#b8b8b4",
   bg          = "#002635",
+  -- bg          = "#040a31",
   bg_dark     = "#040a31",
   bg_light    = "#194b5e",
   term_bg     = "#002635",
@@ -20,7 +23,9 @@ local wind = {
   black_bold  = "#073d52",
   black_light = "#77929e",
   black_gruv  = "#282828",
-  blue        = "#1c8db2",
+  -- blue        = "#1c8db2",
+  -- blue        = "#0B978C",
+  blue        = "#12ade0",
   blue_dark   = "#7eb2dd",
   blue_gruv   = "#8ec07c",
   blue_light  = "#b3e5fc",
@@ -45,7 +50,7 @@ local wind = {
 vim.g.terminal_color_foreground = wind.term_fg
 vim.g.terminal_color_background = wind.term_bg
 vim.g.terminal_color_0  = wind.black
-vim.g.terminal_color_1  = wind.red
+vim.g.terminal_color_1  = wind.red_light
 vim.g.terminal_color_2  = wind.green
 vim.g.terminal_color_3  = wind.orange
 vim.g.terminal_color_4  = wind.blue
@@ -71,6 +76,10 @@ local STRIKE    = 'strikethrough'
 local UNDERCURL = 'undercurl'
 
 local function highlight(group, color)
+    if color.link then
+        vim.api.nvim_command(string.format('highlight link %s %s', group, color.link))
+        return
+    end
     local gui = color.gui and 'gui=' .. color.gui or 'gui=NONE'
     local fg = color.guifg and 'guifg=' .. color.guifg or 'guifg=NONE'
     local bg = color.guibg and 'guibg=' .. color.guibg or 'guibg=NONE'
@@ -80,6 +89,7 @@ local function highlight(group, color)
 )
 end
 
+-- MatchParen     xxx cterm=bold ctermbg=6 gui=bold guifg=#fdf6e3 guibg=#073642
 local function theme(colors)
     local hi = {}
     hi.Bold         = { guifg = nil                , guibg = nil                , gui = BOLD , guisp = nil }
@@ -87,7 +97,7 @@ local function theme(colors)
     hi.Conceal      = { guifg = colors.pink_light  , guibg = colors.bg2         , gui = nil  , guisp = nil }
     hi.Cursor       = { guifg = NONE               , guibg = colors.orange      , gui = nil  , guisp = nil }
     hi.CursorColumn = { guifg = nil                , guibg = colors.ni         , gui = NONE , guisp = nil }
-    hi.CursorLine   = { guifg = nil                , guibg = colors.bg2         , gui = NONE , guisp = nil }
+    hi.CursorLine   = { guifg = nil                , guibg = colors.black         , gui = NONE , guisp = nil }
     hi.CursorLineNr = { guifg = colors.yellow      , guibg = colors.bg          , gui = nil  , guisp = nil }
     hi.Debug        = { guifg = colors.pink_light  , guibg = nil                , gui = nil  , guisp = nil }
     hi.Directory    = { guifg = colors.cyan        , guibg = nil                , gui = nil  , guisp = nil }
@@ -100,7 +110,7 @@ local function theme(colors)
     hi.Italic       = { guifg = nil                , guibg = nil                , gui = NONE , guisp = nil }
     hi.LineNr       = { guifg = colors.black_light , guibg = NONE               , gui = nil  , guisp = nil }
     hi.Macro        = { guifg = colors.cyan        , guibg = nil                , gui = nil  , guisp = nil }
-    hi.MatchParen   = { guifg = colors.bg          , guibg = colors.cyan_light  , gui = nil  , guisp = nil }
+    hi.MatchParen   = { guifg = colors.green_gruv , guibg = colors.bg_dark       , gui = BOLD  , guisp = nil }
     hi.ModeMsg      = { guifg = colors.green       , guibg = nil                , gui = nil  , guisp = nil }
     hi.MoreMsg      = { guifg = colors.green       , guibg = nil                , gui = nil  , guisp = nil }
     hi.NonText      = { guifg = colors.grey        , guibg = nil                , gui = nil  , guisp = nil }
@@ -138,7 +148,8 @@ local function theme(colors)
     hi.SpellCap   = { guifg = colors.black_light , guibg = nil , gui = UNDERCURL , guisp = colors.pink_light }
     hi.SpellRare  = { guifg = colors.black_light , guibg = nil , gui = UNDERCURL , guisp = colors.cyan_light }
 
-    hi.Comment        = { guifg = colors.black_light , guibg = nil , gui = ITALIC      , guisp = nil }
+    hi.Comment        = { guifg = colors.black_light , guibg = nil , gui = NONE      , guisp = nil }
+    hi.Ignore         = { guifg = colors.black_light , guibg = nil , gui = NONE      , guisp = nil }
     hi.Constant       = { guifg = colors.orange      , guibg = nil , gui = NONE        , guisp = nil }
     hi.String         = { guifg = colors.green_light , guibg = nil , gui = NONE        , guisp = nil }
     hi.Character      = { guifg = colors.fg          , guibg = nil , gui = NONE        , guisp = nil }
@@ -242,26 +253,26 @@ local function theme(colors)
     hi.TSType               = { guifg = colors.orange      , guibg = nil , gui = NONE            , guisp = nil }
     hi.TSTypeBuiltin        = { guifg = colors.orange      , guibg = nil , gui = NONE            , guisp = nil }
     hi.TSVariable           = { guifg = colors.blue_light  , guibg = nil , gui = NONE            , guisp = nil }
-    hi.TSVariableBuiltin    = { guifg = colors.fg          , guibg = nil , gui = NONE            , guisp = nil }
+    hi.TSVariableBuiltin    = { guifg = colors.blue_light  , guibg = nil , gui = NONE            , guisp = nil }
 
-    -- hi.User1 = { guifg = colors.pink, guibg = colors.red_light, gui = NONE, guisp = nil }
-    -- hi.User2 = { guifg = colors.pink, guibg = colors.orange, gui = NONE, guisp = nil }
-    -- hi.User3 = { guifg = colors.pink, guibg = colors.orange, gui = NONE, guisp = nil }
-    -- hi.User4 = { guifg = colors.pink, guibg = colors.blue, gui = NONE, guisp = nil }
-    -- hi.User5 = { guifg = colors.red_light, guibg = colors.pink, gui = NONE, guisp = nil }
-    -- hi.User6 = { guifg = colors.pink, guibg = colors.grey, gui = NONE, guisp = nil }
-    -- hi.User7 = { guifg = colors.pink, guibg = colors.red, gui = NONE, guisp = nil }
-    -- hi.User8 = { guifg = colors.black, guibg = colors.green_light, gui = NONE, guisp = nil }
-    -- hi.User9 = { guifg = colors.black, guibg = colors.yellow, gui = NONE, guisp = nil }
+    hi.User1 = { guifg = colors.black, guibg = colors.green_gruv, gui = NONE, guisp = nil }
+    hi.User2 = { guifg = colors.pink, guibg = colors.orange, gui = NONE, guisp = nil }
+    hi.User3 = { guifg = colors.pink, guibg = colors.orange, gui = NONE, guisp = nil }
+    hi.User4 = { guifg = colors.pink, guibg = colors.blue, gui = NONE, guisp = nil }
+    hi.User5 = { guifg = colors.red_light, guibg = colors.pink, gui = NONE, guisp = nil }
+    hi.User6 = { guifg = colors.pink, guibg = colors.grey, gui = NONE, guisp = nil }
+    hi.User7 = { guifg = colors.pink, guibg = colors.red, gui = NONE, guisp = nil }
+    hi.User8 = { guifg = colors.black, guibg = colors.green_light, gui = NONE, guisp = nil }
+    hi.User9 = { guifg = colors.black, guibg = colors.yellow, gui = NONE, guisp = nil }
 
     hi.DiffAdd     = { guifg = colors.green_gruv  , guibg = colors.black_gruv , gui = REVERSE , guisp = nil }
     hi.DiffChange  = { guifg = colors.blue_gruv   , guibg = colors.black_gruv , gui = REVERSE , guisp = nil }
     hi.DiffDelete  = { guifg = colors.red_gruv    , guibg = colors.black_gruv , gui = REVERSE , guisp = nil }
     hi.DiffText    = { guifg = colors.yellow_gruv , guibg = colors.black_gruv , gui = REVERSE , guisp = nil }
     hi.DiffAdded   = { guifg = colors.green_gruv  , guibg = colors.black_gruv , gui = REVERSE , guisp = nil }
-    hi.DiffFile    = { guifg = colors.yellow_gruv , guibg = colors.black_gruv , gui = REVERSE , guisp = nil }
-    hi.DiffNewFile = { guifg = colors.green_gruv  , guibg = colors.black_gruv , gui = REVERSE , guisp = nil }
-    hi.DiffLine    = { guifg = colors.blue_gruv   , guibg = colors.black_gruv , gui = REVERSE , guisp = nil }
+    hi.DiffFile    = { guifg = colors.black_gruv  , guibg = colors.yellow_gruv , gui = REVERSE , guisp = nil }
+    hi.DiffNewFile = { guifg = colors.black_gruv  , guibg = colors.cyan , gui = REVERSE , guisp = nil }
+    hi.DiffLine    = { guifg = colors.black_gruv  , guibg = colors.blue_gruv , gui = REVERSE , guisp = nil }
     hi.DiffRemoved = { guifg = colors.red_gruv    , guibg = colors.black_gruv , gui = REVERSE , guisp = nil }
 
     hi.SignAdd     = { guifg = colors.grey_light , guibg = colors.bg , gui = nil , guisp = nil }
@@ -295,11 +306,16 @@ local function theme(colors)
     hi.TelescopeSelectionCaret = { guifg = colors.green_light , guibg = colors.black   , gui = nil , guisp = nil }
     hi.TelescopeMultiSelection = { guifg = colors.orange      , guibg = nil            , gui = nil , guisp = nil }
     hi.TelescopeNormal         = { guifg = colors.fg          , guibg = nil            , gui = nil , guisp = nil }
+    hi.TelescopePreviewNormal  = { guifg = colors.fg          , guibg = colors.bg2 , gui = nil , guisp = nil }
+    hi.CompeDocumentation      = {link = 'TelescopePreviewNormal'}
     hi.TelescopeMatching       = { guifg = colors.yellow      , guibg = nil            , gui = nil , guisp = nil }
     hi.TelescopePromptPrefix   = { guifg = colors.green_light , guibg = nil            , gui = nil , guisp = nil }
+    hi.TelescopeBorder         = { guifg = colors.grey , guibg = nil            , gui = nil , guisp = nil }
 
-    hi.FernBranchText   = { guifg = colors.blue   , guibg = nil , gui = nil    , guisp = nil }
-    hi.typescriptImport  = { guifg = colors.green , guibg = nil , gui = ITALIC , guisp = nil }
+
+    hi.NvimInternalError = { guifg = colors.red_light, guibg = colors.bg, gui = NONE, guisp    = nil }
+    hi.FernBranchText    = { guifg = colors.blue_gruv   , guibg   = nil , gui      = nil    , guisp = nil }
+    hi.typescriptImport  = { guifg = colors.green , guibg    = nil , gui      = ITALIC , guisp = nil }
 
     return hi
 
@@ -319,6 +335,8 @@ local function setup()
     highlight(group, color)
   end
 end
+
+setup()
 return{
   highlight = highlight,
   setup = setup,
