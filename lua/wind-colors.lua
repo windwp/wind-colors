@@ -14,7 +14,7 @@ local wind = {
   fg          = "#e6e6dc",
   fg_light    = "#b8b8b4",
   bg          = "#002635",
-  -- bg          = "#040a31",
+  bg_tab      = '#004763',
   bg_dark     = "#040a31",
   bg_light    = "#194b5e",
   term_bg     = "#002635",
@@ -120,21 +120,21 @@ local function theme(colors)
     hi.FloatBorder  = { guifg = colors.fg       , guibg = colors.bg_dark         , gui = nil  , guisp = nil }
     -- hi.NormalNC     = { guifg = colors.fg       , guibg = colors.bg_dark         , gui = nil  , guisp = nil }
     hi.PMenu        = { guifg = colors.fg          , guibg = colors.black       , gui = NONE , guisp = nil }
-    hi.PmenuSbar    = { guifg = colors.cyan        , guibg = colors.black_gruv  , gui = nil  , guisp = nil }
-    hi.PMenuSel     = { guifg = colors.cyan        , guibg = colors.grey        , gui = nil  , guisp = nil }
-    hi.PmenuThumb   = { guifg = colors.cyan        , guibg = colors.grey        , gui = nil  , guisp = nil }
+    hi.PmenuSbar    = { guifg = colors.white       , guibg = colors.black_gruv  , gui = nil  , guisp = nil }
+    hi.PMenuSel     = { guifg = colors.fg       , guibg = colors.grey        , gui = nil  , guisp = nil }
+    hi.PmenuThumb   = { guifg = colors.fg          , guibg = colors.grey        , gui = nil  , guisp = nil }
     hi.Question     = { guifg = colors.green       , guibg = nil                , gui = nil  , guisp = nil }
-    hi.QuickFixLine = { guifg = colors.black       , guibg = colors.yellow      , gui = NONE , guisp = nil }
+    hi.QuickFixLine = { guifg = colors.bg          , guibg = colors.green_gruv      , gui = NONE , guisp = nil }
     hi.Search       = { guifg = colors.bg          , guibg = colors.yellow      , gui = nil  , guisp = nil }
     hi.SignColumn   = { guifg = nil                , guibg = nil                , gui = nil  , guisp = nil }
     hi.IndentLine   = { guifg = colors.black_bold  , guibg = nil                , gui = nil  , guisp = nil }
     hi.SpecialKey   = { guifg = colors.pink        , guibg = nil                , gui = nil  , guisp = nil }
     hi.StatusLine   = { guifg = colors.fg          , guibg = colors.black       , gui = NONE , guisp = nil }
-    hi.StatusLineNC = { guifg = colors.fg          , guibg = colors.grey        , gui = NONE , guisp = nil }
+    hi.StatusLineNC = { guifg = colors.fg          , guibg = colors.bg_tab        , gui = NONE , guisp = nil }
     hi.Substitute   = { guifg = colors.red_light   , guibg = colors.green_light , gui = NONE , guisp = nil }
-    hi.TabLine      = { guifg = colors.white       , guibg = colors.black       , gui = NONE , guisp = nil }
-    hi.TabLineFill  = { guifg = colors.white       , guibg = colors.bg          , gui = NONE , guisp = nil }
-    hi.TabLineSel   = { guifg = colors.white_light , guibg = colors.grey        , gui = NONE , guisp = nil }
+    hi.TabLine      = { guifg = colors.white       , guibg = colors.bg_dark       , gui = NONE , guisp = nil }
+    hi.TabLineFill  = { guifg = colors.white       , guibg = colors.black          , gui = NONE , guisp = nil }
+    hi.TabLineSel   = { guifg = colors.white_light , guibg = colors.bg_tab        , gui = NONE , guisp = nil }
     hi.TermCursor   = { guifg = nil                , guibg = colors.orange      , gui = NONE , guisp = nil }
     hi.TermCursorNC = { guifg = nil                , guibg = colors.orange      , gui = nil  , guisp = nil }
     hi.Title        = { guifg = colors.cyan        , guibg = nil                , gui = NONE , guisp = nil }
@@ -320,31 +320,33 @@ local function theme(colors)
     hi.NvimInternalError = { guifg = colors.red_light , guibg = colors.bg , gui = NONE   , guisp = nil }
     hi.FernBranchText    = { guifg = colors.blue_gruv , guibg = nil       , gui = nil    , guisp = nil }
     hi.typescriptImport  = { guifg = colors.green     , guibg = nil       , gui = ITALIC , guisp = nil }
+
     hi.DartUserType      = { link = 'TSType'}
     hi.dartInterpolation = { link = 'TSString'}
 
+    hi.HopNextKey = {guifg = colors.red, guibg = colors.black, gui = BOLD}
+    hi.HopUnMatch = {guifg = colors.red, guibg = colors.green}
     return hi
 
 end
 
 local function setup()
-  vim.api.nvim_command('hi clear')
-  if vim.fn.exists('syntax_on') then
-    vim.api.nvim_command('syntax reset')
-  end
-  vim.api.nvim_command('set termguicolors')
-  local hi = theme(wind)
-  vim.o.background = 'dark'
-  vim.o.termguicolors = true
-  vim.g.colors_name = "wind"
-  for group,color in pairs(hi) do
-    highlight(group, color)
-  end
+    vim.api.nvim_command('hi clear')
+    if vim.fn.exists('syntax_on') then
+        vim.api.nvim_command('syntax reset')
+    end
+    vim.api.nvim_command('set termguicolors')
+    vim.o.background = 'dark'
+    vim.o.termguicolors = true
+    vim.g.colors_name = "wind"
+    local hi = theme(wind)
+    for group,color in pairs(hi) do
+        highlight(group, color)
+    end
 end
 
 setup()
 return {
-  highlight = highlight,
   setup = setup,
   colors = wind,
 }

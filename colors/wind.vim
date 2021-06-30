@@ -1,2 +1,2 @@
-lua require('wind-colors').setup()
+lua require('wind-colors')
 
