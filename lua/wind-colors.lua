@@ -330,12 +330,17 @@ local function theme(colors)
 
 end
 
+local count = 1
 local function setup()
-    vim.api.nvim_command('hi clear')
-    if vim.fn.exists('syntax_on') then
-        vim.api.nvim_command('syntax reset')
+    -- skip autoload from synload
+    --/usr/share/nvim/runtime/syntax/synload.vim
+    if vim.g.colors_name == 'wind' and count == 2 then
+        count = count + 1
+        return
     end
-    vim.api.nvim_command('set termguicolors')
+    if vim.g.colors_name then
+        vim.api.nvim_command('hi clear')
+    end
     vim.o.background = 'dark'
     vim.o.termguicolors = true
     vim.g.colors_name = "wind"
@@ -343,9 +348,10 @@ local function setup()
     for group,color in pairs(hi) do
         highlight(group, color)
     end
+    count = count + 1
 end
 
-setup()
+
 return {
   setup = setup,
   colors = wind,
