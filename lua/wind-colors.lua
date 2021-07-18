@@ -93,57 +93,57 @@ end
 -- MatchParen     xxx cterm=bold ctermbg=6 gui=bold guifg=#fdf6e3 guibg=#073642
 local function theme(colors)
     local hi = {}
-    hi.Bold         = { guifg = nil                , guibg = nil                , gui = BOLD , guisp = nil }
-    hi.ColorColumn  = { guifg = nil                , guibg = colors.bg2         , gui = NONE , guisp = nil }
-    hi.Conceal      = { guifg = colors.pink_light  , guibg = colors.bg2         , gui = nil  , guisp = nil }
-    hi.Cursor       = { guifg = NONE               , guibg = colors.orange      , gui = nil  , guisp = nil }
-    hi.CursorColumn = { guifg = nil                , guibg = colors.ni         , gui = NONE , guisp = nil }
-    hi.CursorLine   = { guifg = nil                , guibg = colors.black         , gui = NONE , guisp = nil }
-    hi.CursorLineNr = { guifg = colors.yellow      , guibg = colors.bg          , gui = nil  , guisp = nil }
-    hi.Debug        = { guifg = colors.pink_light  , guibg = nil                , gui = nil  , guisp = nil }
-    hi.Directory    = { guifg = colors.blue        , guibg = nil                , gui = nil  , guisp = nil }
-    hi.Error        = { guifg = colors.red         , guibg = NONE               , gui = nil  , guisp = nil }
-    hi.ErrorMsg     = { guifg = colors.red_light   , guibg = NONE                , gui = nil  , guisp = nil }
-    hi.Exception    = { guifg = colors.red         , guibg = nil                , gui = nil  , guisp = nil }
-    hi.FoldColumn   = { guifg = colors.black_light , guibg = colors.bg       , gui = nil  , guisp = nil }
-    hi.Folded       = { guifg = colors.black_light , guibg = colors.black       , gui = nil  , guisp = nil }
-    hi.IncSearch    = { guifg = colors.bg          , guibg = colors.yellow      , gui = NONE , guisp = nil }
-    hi.Italic       = { guifg = nil                , guibg = nil                , gui = NONE , guisp = nil }
-    hi.LineNr       = { guifg = colors.black_light , guibg = NONE               , gui = nil  , guisp = nil }
-    hi.Macro        = { guifg = colors.cyan        , guibg = nil                , gui = nil  , guisp = nil }
-    hi.MatchParen   = { guifg = colors.green_gruv , guibg = colors.bg_dark       , gui = UNDERLINE  ,guisp = nil }
-    hi.ModeMsg      = { guifg = colors.green       , guibg = nil                , gui = nil  , guisp = nil }
-    hi.MoreMsg      = { guifg = colors.green       , guibg = nil                , gui = nil  , guisp = nil }
-    hi.NonText      = { guifg = colors.black_bold         , guibg = nil                , gui = nil  , guisp = nil }
-    hi.Normal       = { guifg = colors.fg          , guibg = colors.bg          , gui = nil  , guisp = nil }
-    hi.NormalFloat  = { guifg = colors.fg       , guibg = colors.bg2         , gui = nil  , guisp = nil }
-    hi.FloatBorder  = { guifg = colors.fg       , guibg = colors.bg_dark         , gui = nil  , guisp = nil }
-    -- hi.NormalNC     = { guifg = colors.fg       , guibg = colors.bg_dark         , gui = nil  , guisp = nil }
-    hi.PMenu        = { guifg = colors.fg          , guibg = colors.black       , gui = NONE , guisp = nil }
-    hi.PmenuSbar    = { guifg = colors.white       , guibg = colors.black_gruv  , gui = nil  , guisp = nil }
-    hi.PMenuSel     = { guifg = colors.fg       , guibg = colors.grey        , gui = nil  , guisp = nil }
-    hi.PmenuThumb   = { guifg = colors.fg          , guibg = colors.grey        , gui = nil  , guisp = nil }
-    hi.Question     = { guifg = colors.green       , guibg = nil                , gui = nil  , guisp = nil }
-    hi.QuickFixLine = { guifg = colors.bg          , guibg = colors.green_gruv      , gui = NONE , guisp = nil }
-    hi.Search       = { guifg = colors.bg          , guibg = colors.yellow      , gui = nil  , guisp = nil }
-    hi.SignColumn   = { guifg = nil                , guibg = nil                , gui = nil  , guisp = nil }
-    hi.IndentLine   = { guifg = colors.black_bold  , guibg = nil                , gui = nil  , guisp = nil }
-    hi.SpecialKey   = { guifg = colors.pink        , guibg = nil                , gui = nil  , guisp = nil }
-    hi.StatusLine   = { guifg = colors.fg          , guibg = colors.black       , gui = NONE , guisp = nil }
-    hi.StatusLineNC = { guifg = colors.fg          , guibg = colors.bg_tab        , gui = NONE , guisp = nil }
-    hi.Substitute   = { guifg = colors.red_light   , guibg = colors.green_light , gui = NONE , guisp = nil }
-    hi.TabLine      = { guifg = colors.white       , guibg = colors.bg_dark       , gui = NONE , guisp = nil }
-    hi.TabLineFill  = { guifg = colors.white       , guibg = colors.black          , gui = NONE , guisp = nil }
-    hi.TabLineSel   = { guifg = colors.white_light , guibg = colors.bg_tab        , gui = NONE , guisp = nil }
-    hi.TermCursor   = { guifg = nil                , guibg = colors.orange      , gui = NONE , guisp = nil }
-    hi.TermCursorNC = { guifg = nil                , guibg = colors.orange      , gui = nil  , guisp = nil }
-    hi.Title        = { guifg = colors.cyan        , guibg = nil                , gui = NONE , guisp = nil }
-    hi.TooLong      = { guifg = colors.red_light   , guibg = nil                , gui = nil  , guisp = nil }
-    hi.VertSplit    = { guifg = colors.grey        , guibg = colors.bg          , gui = NONE , guisp = nil }
-    hi.Visual       = { guifg = nil                , guibg = colors.bg_light    , gui = nil  , guisp = nil }
-    hi.VisualNOS    = { guifg = colors.red_light   , guibg = nil                , gui = nil  , guisp = nil }
-    hi.WarningMsg   = { guifg = colors.red_light   , guibg = nil                , gui = nil  , guisp = nil }
-    hi.WildMenu     = { guifg = colors.fg          , guibg = colors.grey        , gui = nil  , guisp = nil }
+    hi.Bold         = { guifg = nil                , guibg = nil                , gui = BOLD      , guisp = nil }
+    hi.ColorColumn  = { guifg = nil                , guibg = colors.bg2         , gui = NONE      , guisp = nil }
+    hi.Conceal      = { guifg = colors.pink_light  , guibg = colors.bg2         , gui = nil       , guisp = nil }
+    hi.Cursor       = { guifg = NONE               , guibg = colors.orange      , gui = nil       , guisp = nil }
+    hi.CursorColumn = { guifg = nil                , guibg = colors.ni          , gui = NONE      , guisp = nil }
+    hi.CursorLine   = { guifg = nil                , guibg = colors.black       , gui = NONE      , guisp = nil }
+    hi.CursorLineNr = { guifg = colors.yellow      , guibg = colors.bg          , gui = nil       , guisp = nil }
+    hi.Debug        = { guifg = colors.pink_light  , guibg = nil                , gui = nil       , guisp = nil }
+    hi.Directory    = { guifg = colors.blue        , guibg = nil                , gui = nil       , guisp = nil }
+    hi.Error        = { guifg = colors.red         , guibg = NONE               , gui = nil       , guisp = nil }
+    hi.ErrorMsg     = { guifg = colors.red_light   , guibg = NONE               , gui = nil       , guisp = nil }
+    hi.Exception    = { guifg = colors.red         , guibg = nil                , gui = nil       , guisp = nil }
+    hi.FoldColumn   = { guifg = colors.black_light , guibg = colors.bg          , gui = nil       , guisp = nil }
+    hi.Folded       = { guifg = colors.black_light , guibg = colors.black       , gui = nil       , guisp = nil }
+    hi.IncSearch    = { guifg = colors.bg          , guibg = colors.yellow      , gui = NONE      , guisp = nil }
+    hi.Italic       = { guifg = nil                , guibg = nil                , gui = NONE      , guisp = nil }
+    hi.LineNr       = { guifg = colors.black_light , guibg = NONE               , gui = nil       , guisp = nil }
+    hi.Macro        = { guifg = colors.cyan        , guibg = nil                , gui = nil       , guisp = nil }
+    hi.MatchParen   = { guifg = colors.green_gruv  , guibg = colors.bg_dark     , gui = UNDERLINE , guisp = nil }
+    hi.ModeMsg      = { guifg = colors.green       , guibg = nil                , gui = nil       , guisp = nil }
+    hi.MoreMsg      = { guifg = colors.green       , guibg = nil                , gui = nil       , guisp = nil }
+    hi.NonText      = { guifg = colors.black_bold  , guibg = nil                , gui = nil       , guisp = nil }
+    hi.Normal       = { guifg = colors.fg          , guibg = colors.bg          , gui = nil       , guisp = nil }
+    hi.NormalFloat  = { guifg = colors.fg          , guibg = colors.bg2         , gui = nil       , guisp = nil }
+    hi.FloatBorder  = {  guifg = colors.grey       , guibg = nil                , gui = nil       , guisp = nil }
+    -- hi.NormalNC     = { guifg = colors.fg       , guibg = colors.bg_dark     , gui = nil       , guisp = nil }
+    hi.PMenu        = { guifg = colors.fg          , guibg = colors.black       , gui = NONE      , guisp = nil }
+    hi.PmenuSbar    = { guifg = colors.white       , guibg = colors.black_gruv  , gui = nil       , guisp = nil }
+    hi.PMenuSel     = { guifg = colors.fg          , guibg = colors.grey        , gui = nil       , guisp = nil }
+    hi.PmenuThumb   = { guifg = colors.fg          , guibg = colors.grey        , gui = nil       , guisp = nil }
+    hi.Question     = { guifg = colors.green       , guibg = nil                , gui = nil       , guisp = nil }
+    hi.QuickFixLine = { guifg = colors.bg          , guibg = colors.green_gruv  , gui = NONE      , guisp = nil }
+    hi.Search       = { guifg = colors.bg          , guibg = colors.yellow      , gui = nil       , guisp = nil }
+    hi.SignColumn   = { guifg = nil                , guibg = nil                , gui = nil       , guisp = nil }
+    hi.IndentLine   = { guifg = colors.black_bold  , guibg = nil                , gui = nil       , guisp = nil }
+    hi.SpecialKey   = { guifg = colors.pink        , guibg = nil                , gui = nil       , guisp = nil }
+    hi.StatusLine   = { guifg = colors.fg          , guibg = colors.black       , gui = NONE      , guisp = nil }
+    hi.StatusLineNC = { guifg = colors.fg          , guibg = colors.bg_tab      , gui = NONE      , guisp = nil }
+    hi.Substitute   = { guifg = colors.red_light   , guibg = colors.green_light , gui = NONE      , guisp = nil }
+    hi.TabLine      = { guifg = colors.white       , guibg = colors.bg_dark     , gui = NONE      , guisp = nil }
+    hi.TabLineFill  = { guifg = colors.white       , guibg = colors.black       , gui = NONE      , guisp = nil }
+    hi.TabLineSel   = { guifg = colors.white_light , guibg = colors.bg_tab      , gui = NONE      , guisp = nil }
+    hi.TermCursor   = { guifg = nil                , guibg = colors.orange      , gui = NONE      , guisp = nil }
+    hi.TermCursorNC = { guifg = nil                , guibg = colors.orange      , gui = nil       , guisp = nil }
+    hi.Title        = { guifg = colors.cyan        , guibg = nil                , gui = NONE      , guisp = nil }
+    hi.TooLong      = { guifg = colors.red_light   , guibg = nil                , gui = nil       , guisp = nil }
+    hi.VertSplit    = { guifg = colors.grey        , guibg = colors.bg          , gui = NONE      , guisp = nil }
+    hi.Visual       = { guifg = nil                , guibg = colors.bg_light    , gui = nil       , guisp = nil }
+    hi.VisualNOS    = { guifg = colors.red_light   , guibg = nil                , gui = nil       , guisp = nil }
+    hi.WarningMsg   = { guifg = colors.red_light   , guibg = nil                , gui = nil       , guisp = nil }
+    hi.WildMenu     = { guifg = colors.fg          , guibg = colors.grey        , gui = nil       , guisp = nil }
 
     hi.SpellBad   = { guifg = colors.black_light , guibg = nil , gui = UNDERCURL , guisp = colors.grey }
     hi.SpellLocal = { guifg = colors.black_light , guibg = nil , gui = UNDERCURL , guisp = colors.blue_dark }
@@ -257,15 +257,15 @@ local function theme(colors)
     hi.TSVariable           = { guifg = colors.blue_light  , guibg = nil , gui = NONE            , guisp = nil }
     hi.TSVariableBuiltin    = { guifg = colors.cyan  , guibg = nil , gui = NONE            , guisp = nil }
 
-    hi.User1 = { guifg = colors.black, guibg = colors.green_gruv, gui = NONE, guisp = nil }
-    hi.User2 = { guifg = colors.pink, guibg = colors.orange, gui = NONE, guisp = nil }
-    hi.User3 = { guifg = colors.pink, guibg = colors.orange, gui = NONE, guisp = nil }
-    hi.User4 = { guifg = colors.pink, guibg = colors.blue, gui = NONE, guisp = nil }
-    hi.User5 = { guifg = colors.red_light, guibg = colors.pink, gui = NONE, guisp = nil }
-    hi.User6 = { guifg = colors.pink, guibg = colors.grey, gui = NONE, guisp = nil }
-    hi.User7 = { guifg = colors.pink, guibg = colors.red, gui = NONE, guisp = nil }
-    hi.User8 = { guifg = colors.black, guibg = colors.green_light, gui = NONE, guisp = nil }
-    hi.User9 = { guifg = colors.black, guibg = colors.yellow, gui = NONE, guisp = nil }
+    hi.User1 = { guifg = colors.black     , guibg = colors.green_gruv  , gui = NONE , guisp = nil }
+    hi.User2 = { guifg = colors.pink      , guibg = colors.orange      , gui = NONE , guisp = nil }
+    hi.User3 = { guifg = colors.pink      , guibg = colors.orange      , gui = NONE , guisp = nil }
+    hi.User4 = { guifg = colors.pink      , guibg = colors.blue        , gui = NONE , guisp = nil }
+    hi.User5 = { guifg = colors.red_light , guibg = colors.pink        , gui = NONE , guisp = nil }
+    hi.User6 = { guifg = colors.pink      , guibg = colors.grey        , gui = NONE , guisp = nil }
+    hi.User7 = { guifg = colors.pink      , guibg = colors.red         , gui = NONE , guisp = nil }
+    hi.User8 = { guifg = colors.black     , guibg = colors.green_light , gui = NONE , guisp = nil }
+    hi.User9 = { guifg = colors.black     , guibg = colors.yellow      , gui = NONE , guisp = nil }
 
     hi.DiffAdd     = { guifg = colors.green_gruv  , guibg = colors.black_gruv , gui = REVERSE , guisp = nil }
     hi.DiffChange  = { guifg = colors.blue_gruv   , guibg = colors.black_gruv , gui = REVERSE , guisp = nil }
@@ -304,28 +304,31 @@ local function theme(colors)
     hi.gitcommitDiscardedFile = { guifg = colors.red_gruv   , guibg = nil , gui = BOLD , guisp = nil }
     hi.gitcommitSelectedFile  = { guifg = colors.yellow     , guibg = nil , gui = BOLD , guisp = nil }
 
-    hi.TelescopeSelection      = { guifg = colors.green_light , guibg = colors.black , gui   = nil , guisp = nil }
-    hi.TelescopeSelectionCaret = { guifg = colors.green_light , guibg = colors.black   , gui = nil , guisp = nil }
-    hi.TelescopeMultiSelection = { guifg = colors.orange      , guibg = nil            , gui = nil , guisp = nil }
-    hi.TelescopeNormal         = { guifg = colors.fg          , guibg = nil            , gui = nil , guisp = nil }
-    hi.PanelFloatingNormal     = { guifg = colors.fg          , guibg = colors.bg2 , gui = nil , guisp = nil }
-    hi.PanelFloatingWhite      = { guifg = colors.black          , guibg = colors.fg_light , gui = nil , guisp = nil }
-    hi.TelescopePreviewNormal  = { link  ='PanelFloatingNormal'}
+    hi.TelescopeSelection      = { guifg = colors.green_light     , guibg = colors.black    , gui   = nil , guisp = nil }
+    hi.TelescopeSelectionCaret = { guifg = colors.green_light     , guibg = colors.black    , gui = nil   , guisp = nil }
+    hi.TelescopeMultiSelection = { guifg = colors.orange          , guibg = nil             , gui = nil   , guisp = nil }
+    hi.TelescopeNormal         = { guifg = colors.fg              , guibg = nil             , gui = nil   , guisp = nil }
+    hi.PanelFloatingNormal     = { guifg = colors.fg              , guibg = colors.bg2      , gui = nil   , guisp = nil }
+    hi.PanelFloatingWhite      = { guifg = colors.black           , guibg = colors.fg_light , gui = nil   , guisp = nil }
     hi.CompeDocumentation      = { link  = 'PanelFloatingNormal'}
-    hi.TelescopeMatching       = { guifg = colors.yellow      , guibg = nil            , gui = nil , guisp = nil }
-    hi.TelescopePromptPrefix   = { guifg = colors.green_light , guibg = nil            , gui = nil , guisp = nil }
-    hi.TelescopeBorder         = { guifg = colors.grey , guibg = nil            , gui = nil , guisp = nil }
+    hi.TelescopePreviewNormal  = { link  ='PanelFloatingNormal'}
+    hi.TelescopeMatching       = { guifg = colors.yellow          , guibg = nil             , gui = nil   , guisp = nil }
+    hi.TelescopePromptPrefix   = { guifg = colors.green_light     , guibg = nil             , gui = nil   , guisp = nil }
+    hi.TelescopeBorder         = { link = 'FloatBorder'}
 
 
     hi.NvimInternalError = { guifg = colors.red_light , guibg = colors.bg , gui = NONE   , guisp = nil }
     hi.FernBranchText    = { guifg = colors.blue_gruv , guibg = nil       , gui = nil    , guisp = nil }
     hi.typescriptImport  = { guifg = colors.green     , guibg = nil       , gui = ITALIC , guisp = nil }
 
+    hi.WhichKeyDesc = {link = 'SignAdd'}
+    hi.WhichKey = {guifg = colors.green, guibg = nil, gui = BOLD}
     hi.DartUserType      = { link = 'TSType'}
     hi.dartInterpolation = { link = 'TSString'}
 
     hi.HopNextKey = {guifg = colors.red, guibg = colors.black, gui = BOLD}
     hi.HopUnMatch = {guifg = colors.red, guibg = colors.green}
+
     return hi
 
 end
@@ -333,7 +336,7 @@ end
 local count = 1
 local function setup()
     -- skip autoload from synload
-    --/usr/share/nvim/runtime/syntax/synload.vim
+    -- /usr/share/nvim/runtime/syntax/synload.vim
     if vim.g.colors_name == 'wind' and count == 2 then
         count = count + 1
         return
