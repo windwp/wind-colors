@@ -119,8 +119,8 @@ local function theme(colors)
     hi.NormalFloat  = { guifg = colors.fg          , guibg = colors.bg2         , gui = nil       , guisp = nil }
     hi.FloatBorder  = {  guifg = colors.grey       , guibg = nil                , gui = nil       , guisp = nil }
     -- hi.NormalNC     = { guifg = colors.fg       , guibg = colors.bg_dark     , gui = nil       , guisp = nil }
-    hi.PMenu        = { guifg = colors.fg          , guibg = colors.black       , gui = NONE      , guisp = nil }
-    hi.PmenuSbar    = { guifg = colors.white       , guibg = colors.black_gruv  , gui = nil       , guisp = nil }
+    hi.PMenu        = { guifg = colors.fg          , guibg = colors.bg2         , gui = NONE      , guisp = nil }
+    hi.PmenuSbar    = { guifg = colors.white       , guibg = colors.bg2         , gui = nil       , guisp = nil }
     hi.PMenuSel     = { guifg = colors.fg          , guibg = colors.grey        , gui = nil       , guisp = nil }
     hi.PmenuThumb   = { guifg = colors.fg          , guibg = colors.grey        , gui = nil       , guisp = nil }
     hi.Question     = { guifg = colors.green       , guibg = nil                , gui = nil       , guisp = nil }
@@ -256,9 +256,11 @@ local function theme(colors)
     hi.TSTypeBuiltin        = { guifg = colors.blue_light      , guibg = nil , gui = NONE            , guisp = nil }
     hi.TSVariable           = { guifg = colors.blue_light  , guibg = nil , gui = NONE            , guisp = nil }
     hi.TSVariableBuiltin    = { guifg = colors.cyan  , guibg = nil , gui = NONE            , guisp = nil }
+    hi.TSTagAttribute       = { guifg = colors.fg_light    , guibg = nil , gui = NONE            , guisp = nil }
 
     hi.User1 = { guifg = colors.black     , guibg = colors.green_gruv  , gui = NONE , guisp = nil }
     hi.User2 = { guifg = colors.pink      , guibg = colors.orange      , gui = NONE , guisp = nil }
+    --update 1 plug
     hi.User3 = { guifg = colors.pink      , guibg = colors.orange      , gui = NONE , guisp = nil }
     hi.User4 = { guifg = colors.pink      , guibg = colors.blue        , gui = NONE , guisp = nil }
     hi.User5 = { guifg = colors.red_light , guibg = colors.pink        , gui = NONE , guisp = nil }
@@ -282,10 +284,10 @@ local function theme(colors)
     hi.SignDelete  = { guifg = colors.red_light  , guibg = colors.bg , gui = nil , guisp = nil }
     hi.SignText    = { guifg = colors.fg         , guibg = colors.bg , gui = nil , guisp = nil }
 
-    hi.GitGutterAdd     = { guifg = colors.grey_light , guibg = colors.bg , gui = nil , guisp = nil }
-    hi.GitGutterChange  = { guifg = colors.green_light, guibg = colors.bg , gui = nil , guisp = nil }
-    hi.GitGutterDelete  = { guifg = colors.red_light  , guibg = colors.bg , gui = nil , guisp = nil }
-    hi.GitGutterText    = { guifg = colors.fg         , guibg = colors.bg , gui = nil , guisp = nil }
+    hi.GitSignsAdd     = { guifg = colors.grey_light , guibg = colors.bg , gui = nil , guisp = nil }
+    hi.GitSignsChange  = { guifg = colors.green_light, guibg = colors.bg , gui = nil , guisp = nil }
+    hi.GitSignsDelete  = { guifg = colors.red_light  , guibg = colors.bg , gui = nil , guisp = nil }
+    hi.GitSignsText    = { guifg = colors.fg         , guibg = colors.bg , gui = nil , guisp = nil }
 
 
     hi.gitcommitOverflow      = { guifg = colors.red        , guibg = nil , gui = nil  , guisp = nil }
@@ -319,6 +321,9 @@ local function theme(colors)
 
     hi.NvimInternalError = { guifg = colors.red_light , guibg = colors.bg , gui = NONE   , guisp = nil }
     hi.FernBranchText    = { guifg = colors.blue_gruv , guibg = nil       , gui = nil    , guisp = nil }
+    hi.NvimTreeFolderName={ guifg = colors.blue_gruv , guibg = nil       , gui = nil    , guisp = nil }
+    hi.NvimTreeOpenedFolderName = { guifg = colors.blue, guibg = nil, gui = nil, guisp = nil }
+    -- hi.NvimTreeRootFolder={guifg=colors.bg}
     hi.typescriptImport  = { guifg = colors.green     , guibg = nil       , gui = ITALIC , guisp = nil }
 
     hi.WhichKeyDesc = {link = 'SignAdd'}
@@ -333,14 +338,7 @@ local function theme(colors)
 
 end
 
-local count = 1
 local function setup()
-    -- skip autoload from synload
-    -- /usr/share/nvim/runtime/syntax/synload.vim
-    if vim.g.colors_name == 'wind' and count == 2 then
-        count = count + 1
-        return
-    end
     if vim.g.colors_name then
         vim.api.nvim_command('hi clear')
     end
@@ -351,7 +349,6 @@ local function setup()
     for group,color in pairs(hi) do
         highlight(group, color)
     end
-    count = count + 1
 end
 
 
